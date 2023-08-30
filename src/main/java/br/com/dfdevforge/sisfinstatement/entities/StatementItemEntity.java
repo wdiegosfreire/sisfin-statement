@@ -1,6 +1,7 @@
 package br.com.dfdevforge.sisfinstatement.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,30 +28,33 @@ import lombok.Setter;
 @Entity
 @Table(name = "sta_statement")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "identity")
-public class StatementEntity extends BaseEntity {
+public class StatementItemEntity extends BaseEntity {
 	@Id
-	@Column(name = "sta_identity")
+	@Column(name = "sti_identity")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long identity;
 
-	@Column(name = "sta_year")
-	private Integer year;
+	@Column(name = "sti_movement_date")
+	private Date movementDate;
 
-	@Column(name = "sta_month")
-	private Integer month;
+	@Column(name = "sti_description")
+	private String description;
 
-	@Column(name = "sta_opening_balance")
-	private BigDecimal openingBalance;
+	@Column(name = "sti_document_number")
+	private String documentNumber;
 
-	@Column(name = "sta_closing_balance")
-	private BigDecimal closingBalance;
+	@Column(name = "sti_operation_type")
+	private String operationType;
 
-	@Column(name = "sta_is_closed")
-	private Boolean isClosed;
+	@Column(name = "sti_movement_value")
+	private BigDecimal movementValue;
+
+	@Column(name = "sti_is_exported")
+	private Boolean isExported;
 
 	@ManyToOne
-	@JoinColumn(name = "loc_identity")
-	private StatementTypeEntity statementType;
+	@JoinColumn(name = "sta_identity")
+	private StatementEntity statement;
 
 	@Column(name = "usr_identity")
 	private Long userIdentity;
