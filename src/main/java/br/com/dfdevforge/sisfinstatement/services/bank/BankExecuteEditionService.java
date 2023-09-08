@@ -19,7 +19,6 @@ public class BankExecuteEditionService extends BankBaseService implements Common
 	public void executeBusinessRule() throws BaseException {
 		this.findById();
 		this.editBank();
-		this.findAllBanks();
 	}
 
 	@Override
@@ -37,9 +36,5 @@ public class BankExecuteEditionService extends BankBaseService implements Common
 
 	private void editBank() throws BaseException {
 		this.bankRepository.save(this.bankParam);
-	}
-
-	private void findAllBanks() {
-		this.setArtifact("bankList", this.bankRepository.findByUserIdentityOrderByNameAsc(bankParam.getUserIdentity()));
 	}
 }

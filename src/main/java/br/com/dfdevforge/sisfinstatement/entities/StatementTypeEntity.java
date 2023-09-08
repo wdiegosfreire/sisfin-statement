@@ -9,9 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import br.com.dfdevforge.common.entities.BaseEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +21,7 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = false, of = {"identity"})
 @Entity
 @Table(name = "stt_statement_type")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "identity")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "identity")
 public class StatementTypeEntity extends BaseEntity {
 	@Id
 	@Column(name = "stt_identity")

@@ -1,0 +1,23 @@
+!!br.com.dfdevforge.sisfinstatement.services.statement.ReceiptEntity
+satNumber: "230072156"
+extractNumber: "044255"
+qrcode: "2321 1132 8507 0200 0150 5923 0072 1560 4425 5369 2128"
+datetime: 27/11/2021 14:07:46
+totalValue: 49,47
+
+location:
+  cnpj: 32.850.702/0001-50
+  name: ARRETADO BAR E RESTAURANTE LTDA
+  street: R REPUBLICA DA ARMENIA
+  number: "01311"
+  complement: LOJA 08
+  district: PARQUE MANIBURA
+  city: FORTALEZA
+  postalCode: "60821760"
+
+items:
+  - 001 | 1014 | SELF-SERVICE KG SABADO          | 0.204 | UN | 52,90 | 10,79
+  - 002 | 1014 | SELF-SERVICE KG SABADO          | 0.244 | UN | 52,90 | 12,90
+  - 003 |  235 | COCA-COLA 600ML                 |     1 | UN |  6,50 |  6,50
+  - 004 | 1014 | SELF-SERVICE KG SABADO          |  0.27 | UN | 52,90 | 14,28
+  - 005 |  221 | SUCO POLPAS DIVERSAS COPO 300ML |     1 | UN |  5,00 |  5,00

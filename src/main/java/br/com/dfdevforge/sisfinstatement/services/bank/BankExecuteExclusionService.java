@@ -19,7 +19,6 @@ public class BankExecuteExclusionService extends BankBaseService implements Comm
 	public void executeBusinessRule() throws BaseException {
 		this.findById();
 		this.deleteBank();
-		this.findAllBanks();
 	}
 
 	@Override
@@ -37,9 +36,5 @@ public class BankExecuteExclusionService extends BankBaseService implements Comm
 
 	private void deleteBank() throws BaseException {
 		this.bankRepository.delete(this.bankParam);
-	}
-
-	private void findAllBanks() {
-		this.setArtifact("bankList", this.bankRepository.findByUserIdentityOrderByNameAsc(bankParam.getUserIdentity()));
 	}
 }
