@@ -49,7 +49,7 @@ public class StatementEntity extends BaseEntity {
 	private Boolean isClosed;
 
 	@ManyToOne
-	@JoinColumn(name = "loc_identity")
+	@JoinColumn(name = "stt_identity")
 	private StatementTypeEntity statementType;
 
 	@Column(name = "usr_identity")
