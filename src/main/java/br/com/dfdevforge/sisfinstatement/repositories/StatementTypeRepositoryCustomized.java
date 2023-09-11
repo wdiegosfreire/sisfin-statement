@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.dfdevforge.common.util.Utils;
 import br.com.dfdevforge.sisfinstatement.entities.StatementTypeEntity;
 
 @Repository
@@ -17,26 +16,25 @@ public class StatementTypeRepositoryCustomized {
 		this.entityManager = entityManager;
 	}
 
-	public List<StatementTypeEntity> searchInAllProperties(StatementTypeEntity bank) {
+	public List<StatementTypeEntity> searchInAllProperties(StatementTypeEntity statementType) {
 		StringBuilder whereClause = new StringBuilder();
 
 		whereClause.append(" stt.userIdentity = :userIdentity ");
 
 		whereClause.append(" and ( ");
 		whereClause.append("   stt.name like :filter ");
+		whereClause.append("   or stt.bank.name like :filter ");
+		whereClause.append("   or stt.identity like :filter ");
 		whereClause.append(" ) ");
-
-		if (Utils.value.isNumber(bank.getFilter()))
-			whereClause.append(" or stt.identity like :filter ");
 
 		StringBuilder jpql = new StringBuilder();
 
-		jpql.append("select stt from StatementTypeEntity as stt where " + whereClause);
+		jpql.append("select stt from StatementTypeEntity stt where " + whereClause);
 
 		var query = this.entityManager.createQuery(jpql.toString(), StatementTypeEntity.class);
 
-		query.setParameter("userIdentity", bank.getUserIdentity());
-		query.setParameter("filter", "%" + bank.getFilter() + "%");
+		query.setParameter("userIdentity", statementType.getUserIdentity());
+		query.setParameter("filter", "%" + statementType.getFilter() + "%");
 		
 		return query.getResultList();
 	}

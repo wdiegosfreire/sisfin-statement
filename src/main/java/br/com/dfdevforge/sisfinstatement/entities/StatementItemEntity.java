@@ -26,7 +26,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = false, of = {"identity"})
 @Entity
-@Table(name = "sta_statement")
+@Table(name = "sti_statement_item")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "identity")
 public class StatementItemEntity extends BaseEntity {
 	@Id

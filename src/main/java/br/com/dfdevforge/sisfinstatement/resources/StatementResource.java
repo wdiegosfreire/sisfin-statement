@@ -15,7 +15,7 @@ import br.com.dfdevforge.sisfinstatement.services.statement.StatementAccessEditi
 import br.com.dfdevforge.sisfinstatement.services.statement.StatementAccessModuleService;
 import br.com.dfdevforge.sisfinstatement.services.statement.StatementExecuteEditionService;
 import br.com.dfdevforge.sisfinstatement.services.statement.StatementExecuteExclusionService;
-import br.com.dfdevforge.sisfinstatement.services.statement.StatementExecuteImportService;
+import br.com.dfdevforge.sisfinstatement.services.statement.StatementExecuteRegistrationService;
 import br.com.dfdevforge.sisfinstatement.services.statement.StatementExecuteSearchService;
 
 @RestController
@@ -28,8 +28,7 @@ public class StatementResource {
 	@Autowired private StatementExecuteSearchService statementExecuteSearchService;
 	@Autowired private StatementExecuteEditionService statementExecuteEditionService;
 	@Autowired private StatementExecuteExclusionService statementExecuteExclusionService;
-	@Autowired private StatementExecuteImportService statementExecuteImportService;
-	
+	@Autowired private StatementExecuteRegistrationService statementExecuteRegistrationService;
 
 	@PostMapping(value = "/accessModule")
 	public ResponseEntity<ResourceDataEntity> accessModule(@RequestBody StatementEntity statement, @RequestParam String token) throws BaseException {
@@ -71,10 +70,10 @@ public class StatementResource {
 		return ResponseEntity.ok(this.resourceData);
 	}
 
-	@PostMapping(value = "/executeImport")
+	@PostMapping(value = "/executeRegistration")
 	public ResponseEntity<ResourceDataEntity> executeRegistration(@RequestBody StatementEntity statement, @RequestParam String token) throws BaseException {
-		this.statementExecuteImportService.setParams(statement, token);
-		this.resourceData.setMap(this.statementExecuteImportService.execute());
+		this.statementExecuteRegistrationService.setParams(statement, token);
+		this.resourceData.setMap(this.statementExecuteRegistrationService.execute());
 
 		return ResponseEntity.ok(this.resourceData);
 	}

@@ -23,11 +23,18 @@ public class StatementRepositoryCustomized {
 		whereClause.append(" sta.userIdentity = :userIdentity ");
 
 		whereClause.append(" and ( ");
-		whereClause.append("   sta.year like :filter ");
-		whereClause.append(" ) ");
+		whereClause.append("   sta.statementType.name like :filter ");
+		whereClause.append("   or sta.statementType.bank.name like :filter ");
 
-		if (Utils.value.isNumber(statement.getFilter()))
+		if (Utils.value.isNumber(statement.getFilter())) {
+			whereClause.append(" or sta.year like :filter ");
+			whereClause.append(" or sta.month like :filter ");
 			whereClause.append(" or sta.identity like :filter ");
+			whereClause.append(" or sta.openingBalance like :filter ");
+			whereClause.append(" or sta.closingBalance like :filter ");
+		}
+
+		whereClause.append(" ) ");
 
 		StringBuilder jpql = new StringBuilder();
 
